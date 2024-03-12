@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Matching 101</title>
+    <style>
+        body {
+            background-color: #5AB9EA;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+     <nav>
+        <ul>
+            <li>
+                <a href="#" class="dropdown-toggle">Regex Matching App</a>
+            </li>
+            <li>
+                <a href="/email" >Email Validation</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>Try the Application Here</h1>
+        <form action="/regex_result" method="post">
+            <label>Enter your Regular Expression:</label>
+            <input type="text" id="pattern" name="pattern" value="{{ pattern }}" autocomplete="off" required>
+            <br>
+            <label>Enter your Test string:</label>
+            <textarea id="text" name="text" rows="4" cols="50" autocomplete="off" required>{{ text }}</textarea>
+            <br>
+            <button type="submit">Search</button>
+        </form>
+        <h3>Matches:</h3>
+        <p>
+            {% for match in matches %}
+                {{ match }}
+                {% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+</body>
+</html>
